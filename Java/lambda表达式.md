@@ -16,15 +16,14 @@
 new Thread(new Runnable() {
   @Override
   public void run() {
-    // 访问全局变量
-    System.out.println(s1);
+    System.out.println("a");
   }
 }).start();
 
 
 //2.jdk8新特性，lambda表达式优化线程模式
 new Thread(()->{
-  System.out.println(s1);
+  System.out.println("a");
 }).start();
 ```
 
@@ -64,9 +63,9 @@ public interface IUserCredential {
 }
 
 public static void main(String[] args) {
-	IUserCredential ic = new UserCredentialImpl();
   //1.实现类可以直接调用接口中定义的“默认方法”
-  System.out.println(ic.getCredential("admin"));
+	IUserCredential ic = new UserCredentialImpl();
+  ic.getCredential("admin");
   
   //2.静态类,类名调用
   IUserCredential.getNickName();
@@ -94,6 +93,7 @@ public class UserCredentialIml implements IUserCredential{
 IUserCredential ic = new UserCredentialImpl();
 ic.verifyUser("admin");
 
+
 //2.匿名内部类的方法 实现一个接口
 IUserCredential ic2 = new IUserCredential(){
   @Override
@@ -102,6 +102,7 @@ IUserCredential ic2 = new IUserCredential(){
   }
 };
 ic2.verifyUser("admin");
+
 
 //3. Lambda表示式的实现接口
 IUserCredential ic3 = （String username）->{
@@ -114,3 +115,15 @@ ic3.verifyUser("admin");
 
 ##### 2.3 jdk中常见的函数式接口
 
+- java.lang.Runnable
+- java.lang.Comparable
+- java.lang.Comparator
+- java.io.FileFilter
+- More... JDK8提供了java.util.function包，提供了常用的函数式功能接口
+
+
+
+Java.util.function.Predicate<T>
+
+- 接收参数对象T，返回一个boolean类型结果
+- 
