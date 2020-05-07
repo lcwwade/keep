@@ -1,4 +1,4 @@
 # Keep
 
-Keep reading, keep writing
-
+- Keep reading, keep writing
+- Use issues
